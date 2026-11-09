@@ -1,0 +1,1061 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Favourite Little Human ❤️</title>
+
+<style>
+:root {
+    --pink: #e75480;
+    --dark: #9e2854;
+    --light: #fff0f5;
+    --cream: #fffafc;
+    --gold: #d9a441;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: #853653;
+    background:
+        radial-gradient(circle at top left, #fff7fa, transparent 45%),
+        linear-gradient(135deg, #ffe4ed, #ffc1d5, #fff0f5);
+    overflow-x: hidden;
+    text-align: center;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+#musicBtn {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 50;
+    background: #ffffffd9;
+    color: var(--dark);
+    border: 1px solid #f5c3d5;
+    padding: 11px 15px;
+    border-radius: 30px;
+    font-size: 13px;
+}
+
+.container {
+    width: 92%;
+    max-width: 650px;
+    margin: auto;
+    padding: 85px 0 45px;
+    position: relative;
+    z-index: 2;
+}
+
+.screen {
+    display: none;
+    animation: fadeIn .8s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+    color: #ad315e;
+    font-size: clamp(29px, 7vw, 43px);
+    margin-bottom: 18px;
+}
+
+h2 {
+    color: #bd4771;
+    margin-bottom: 18px;
+}
+
+p {
+    line-height: 1.8;
+}
+
+.small {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #bd6686;
+    margin-bottom: 15px;
+}
+
+.card {
+    background: #fffafc;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    padding: 30px 24px;
+    box-shadow: 0 12px 35px #a72b5c20;
+    margin: 20px auto;
+}
+
+.main-btn {
+    background: linear-gradient(135deg, #e75480, #bd315f);
+    color: white;
+    padding: 15px 28px;
+    border-radius: 35px;
+    font-size: 16px;
+    margin-top: 23px;
+    box-shadow: 0 5px 15px #d84a7c40;
+    transition: .3s;
+}
+
+.main-btn:hover {
+    transform: scale(1.06);
+}
+
+.secondary-btn {
+    background: #ffe2ec;
+    color: #a72b5c;
+    padding: 13px 22px;
+    border-radius: 30px;
+    margin: 8px;
+}
+
+.big-heart {
+    font-size: 85px;
+    display: block;
+    margin: 20px;
+    animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+    50% {transform: scale(1.15);}
+}
+
+/* ENVELOPE */
+
+.envelope {
+    font-size: 100px;
+    margin: 20px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.letter-text {
+    text-align: left;
+    line-height: 2;
+    white-space: pre-line;
+    font-size: 16px;
+}
+
+/* REASONS */
+
+.reason-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+    margin-top: 25px;
+}
+
+.reason {
+    min-height: 120px;
+    padding: 18px 12px;
+    border-radius: 18px;
+    background: #ffe6ef;
+    border: 1px solid white;
+    color: #9e2854;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    transition: .3s;
+}
+
+.reason:hover {
+    transform: translateY(-5px);
+}
+
+.reason .answer {
+    display: none;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.reason.revealed .answer {
+    display: block;
+}
+
+.reason.revealed .question {
+    display: none;
+}
+
+/* QUIZ */
+
+.quiz-question {
+    background: #fff0f5;
+    padding: 20px;
+    border-radius: 18px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.quiz-question p {
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.quiz-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    margin: 8px 0;
+    background: white;
+    border: 1px solid #f4c2d4;
+    color: #87344f;
+    border-radius: 12px;
+}
+
+.quiz-option.selected {
+    background: #e75480;
+    color: white;
+}
+
+#quizResult {
+    display: none;
+    margin-top: 20px;
+    background: #ffe3ed;
+    border-radius: 15px;
+    padding: 18px;
+}
+
+/* PROMISES */
+
+.promise {
+    padding: 16px;
+    background: #fff0f5;
+    border-radius: 15px;
+    margin: 12px 0;
+    text-align: left;
+    font-size: 16px;
+}
+
+.promise span {
+    margin-right: 10px;
+}
+
+/* PROPOSAL */
+
+.proposal-question {
+    font-size: 27px;
+    color: #bd245b;
+    margin: 25px 0;
+}
+
+.proposal-buttons {
+    min-height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.accept {
+    background: #d6336c;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    position: relative;
+    z-index: 3;
+}
+
+.reject {
+    background: #777;
+    color: white;
+    padding: 15px 22px;
+    border-radius: 30px;
+    font-size: 15px;
+    position: relative;
+    z-index: 5;
+}
+
+/* SUCCESS */
+
+#success h1 {
+    font-size: clamp(35px, 8vw, 52px);
+}
+
+.firework-emoji {
+    font-size: 75px;
+    margin: 15px;
+}
+
+.secret-box {
+    display: none;
+    background: #fff0f5;
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 25px;
+    line-height: 2;
+    animation: fadeIn 1s ease;
+}
+
+.secret-box p {
+    white-space: pre-line;
+}
+
+/* FLOATING HEARTS */
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    animation: floatUp 8s linear forwards;
+    pointer-events: none;
+    z-index: 1;
+    opacity: .7;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#fireworks {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* MOBILE */
+
+@media(max-width: 480px) {
+    .container {
+        padding-top: 90px;
+    }
+
+    .card {
+        padding: 24px 17px;
+    }
+
+    .reason-grid {
+        gap: 9px;
+    }
+
+    .reason {
+        min-height: 130px;
+        font-size: 14px;
+    }
+
+    .letter-text {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="loveSong" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" onclick="toggleMusic()">
+    ♫ Play Music
+</button>
+
+<canvas id="fireworks"></canvas>
+
+<div class="container">
+
+<!-- SCREEN 1: WELCOME -->
+
+<section class="screen active" id="welcome">
+
+    <div class="small">A little surprise for my special one</div>
+
+    <span class="big-heart">💗</span>
+
+    <h1>Hey, My Favourite little Human!</h1>
+
+    <div class="card">
+        <p>
+            I have been planning something special for you.
+
+            <br><br>
+
+            So ek lambiiiii saans lo and put on your biggest smile
+            and get ready...
+
+            <br><br>
+
+            Because this little surprise comes straight
+            from my chotu sa heart. ❤️
+        </p>
+    </div>
+
+    <button class="main-btn" onclick="showScreen('letter')">
+        LET'S BEGIN ❤️
+    </button>
+
+</section>
+
+
+<!-- SCREEN 2: LOVE LETTER -->
+
+<section class="screen" id="letter">
+
+    <div class="small">A letter written with love</div>
+
+    <span class="envelope">💌</span>
+
+    <h1>Something From My Heart</h1>
+
+    <div class="card">
+
+        <h2>My Dearest Love ❤️</h2>
+
+        <div class="letter-text">
+Mujhe pata nhi kaha se shuru karu bohoooooooooooot sari chize hai bolne toh.. par first thing first and that is I LOVE YOU AND ONLY YOU!❤️
+
+Tum meri life ka sabse best part ban chuke ho. Tumhari presence mere normal day ko bhi special bana deti itna matter krte tum mere liye,tumhari choti si smile mujhe happy kart, aur tumhare sath spend kiye hue sare moments bohot mean karte mere liye!
+
+Mujhe tumhare sath rehna hai, tumse shadi krni h, tumhare sath hi budha hona h, hasna hai, ladna bhi hai, aur bohoooooooooooot sari memories create karni hai jo hum budhe hoke yaad karege, aur tumhare har ache bure waqt me tumhe support krna hai.
+
+Mai har chiz ekdum perfectly express nahi kar skti, but ha all you need to know k tum khaas ho mere liye bohot zyda khaas ho.
+
+mai yeh promise toh nahi kr skti ke humare sab din perfect aur khushi wale hoge , but yeh promise hai din kaise bhi rhe mai tumhare sath rahungi humesha.
+
+Aur aaj mujhe tumhe bas yeh batana h k tum kitna mean krte mere liye.
+
+With all my love,
+your to be wife ❤️
+        </div>
+
+    </div>
+
+    <button class="main-btn" onclick="showScreen('reasons')">
+        A LITTLE MORE ABOUT YOU →
+    </button>
+
+</section>
+
+
+<!-- SCREEN 3: REASONS -->
+
+<section class="screen" id="reasons">
+
+    <div class="small">A list that could go on forever</div>
+
+    <h1>Reasons Why I Choose You ❤️</h1>
+
+    <p>Tap each piece of my little heart to know the reason why i love you so much.</p>
+
+    <div class="reason-grid">
+
+        <button class="reason" onclick="reveal(this)">
+            <span class="question">💗 Reason 01</span>
+            <span class="answer">Tumhari ek choti si smile pe bhi mai fida hu.</span>
+        </button>
+
+        <button class="reason" onclick="reveal(this)">
+            <span class="question">💗 Reason 02</span>
+            <span class="answer">Mai tumhare sath bohot safe feel karti.</span>
+        </button>
+
+        <button class="reason" onclick="reveal(this)">
+            <span class="question">💗 Reason 03</span>
+            <span class="answer">Humari choti se choti conversation bhi mere liye bohot mean krti.</span>
+        </button>
+
+        <button class="reason" onclick="reveal(this)">
+            <span class="question">💗 Reason 04</span>
+            <span class="answer">Tum mere normal days ko special day bananeka power rakhte.</span>
+        </button>
+
+        <button class="reason" onclick="reveal(this)">
+            <span class="question">💗 Reason 05</span>
+            <span class="answer">Mai tumhare sath reh kar bacche jaisa feel karti sachme</span>.</span>
+        </button>
+
+        <button class="reason" onclick="reveal(this)">
+            <span class="question">💗 Reason 06</span>
+            <span class="answer">Mai grateful hu ke tum mere sath ho.</span>
+        </button>
+
+        <button class="reason" onclick="reveal(this)">
+            <span class="question">💗 Reason 07</span>
+            <span class="answer">Tumhari happiness bohot matter karti mere liye.</span>
+        </button>
+
+        <button class="reason" onclick="reveal(this)">
+            <span class="question">💗 Reason 08</span>
+            <span class="answer">Aur har flaw aur imperfections ke sath, I choose you.</span>
+        </button>
+
+    </div>
+
+    <button class="main-btn" onclick="showScreen('quiz')">
+        Now ek chota sa memory test →
+    </button>
+
+</section>
+
+
+<!-- SCREEN 4: QUIZ -->
+
+<section class="screen" id="quiz">
+
+    <div class="small">Let's see how well you know us</div>
+
+    <h1>Our Little Love Quiz 💕</h1>
+
+    <p>There are no wrong answers. Just memories!</p>
+
+    <div class="card">
+
+        <div class="quiz-question">
+            <p>1. What makes me happiest?</p>
+
+            <button class="quiz-option" onclick="choose(this)">
+                Our little moments together
+            </button>
+
+            <button class="quiz-option" onclick="choose(this)">
+                Your silly jokes
+            </button>
+
+            <button class="quiz-option" onclick="choose(this)">
+                Absolutely everything about us
+            </button>
+        </div>
+
+        <div class="quiz-question">
+            <p>2. What do I want most?</p>
+
+            <button class="quiz-option" onclick="choose(this)">
+                Expensive gifts
+            </button>
+
+            <button class="quiz-option" onclick="choose(this)">
+                Your time, love and effort
+            </button>
+
+            <button class="quiz-option" onclick="choose(this)">
+                Unlimited holidays
+            </button>
+        </div>
+
+        <div class="quiz-question">
+            <p>3. What is my favourite future plan?</p>
+
+            <button class="quiz-option" onclick="choose(this)">
+                Making memories together
+            </button>
+
+            <button class="quiz-option" onclick="choose(this)">
+                Growing old together
+            </button>
+
+            <button class="quiz-option" onclick="choose(this)">
+                ALL OF THE ABOVE ❤️
+            </button>
+        </div>
+
+        <button class="main-btn" onclick="finishQuiz()">
+            SUBMIT MY ANSWERS ❤️
+        </button>
+
+        <div id="quizResult">
+            <h2>And the winner is... YOU! 🏆</h2>
+            <p>
+                No matter what you answered,
+                you're already my favourite person.
+                I hope we keep making beautiful memories together!
+            </p>
+        </div>
+
+    </div>
+
+    <button class="secondary-btn" onclick="showScreen('promises')">
+        CONTINUE →
+    </button>
+
+</section>
+
+
+<!-- SCREEN 5: PROMISES -->
+
+<section class="screen" id="promises">
+
+    <div class="small">A few things from my heart</div>
+
+    <h1>My Promises To You ❤️</h1>
+
+    <div class="card">
+
+        <div class="promise">
+            <span>🌷</span>
+            I promise ke mai tumhe humesha suppport karungi aur tumhari har success ko hum sathme celebrate karege.
+        </div>
+
+        <div class="promise">
+            <span>💗</span>
+            I promise k tum mujhse jab bhi jo bhi share karna chahoge mai sunne ke liye rahungi.
+        </div>
+
+        <div class="promise">
+            <span>🌙</span>
+            I promise k tumhare ache bure dino me tumhe humesha mera sath milega.
+        </div>
+
+        <div class="promise">
+            <span>🫶</span>
+            I promise k mai tumse hi shadi karungi bhalehi kitta bhi tang karo tum mujhe.
+        </div>
+
+        <div class="promise">
+            <span>💍</span>
+            I promise k mai humesha apneko choose karungi over our ladai jhagda.
+        </div>
+
+    </div>
+
+    <p>
+        Ekdum perfect toh koi nhi hota as you said.
+        Mujhe bas ek perfect life chahiye tumhare sath.
+    </p>
+
+    <button class="main-btn" onclick="showScreen('proposal')">
+        ONE LAST QUESTION... ❤️
+    </button>
+
+</section>
+
+
+<!-- SCREEN 6: PROPOSAL -->
+
+<section class="screen" id="proposal">
+
+    <div class="small">This is the moment!</div>
+
+    <span class="big-heart">💍</span>
+
+    <h1>My to be husband...</h1>
+
+    <div class="card">
+
+        <p>
+            Agar mujhe choose krna pade k kiske sath mujhe meri
+            life, meri happiness, mera pyar 
+            and mera future share krna h...
+
+            <br><br>
+
+            Toh mai humesha tumhe choose karungi.
+
+            <br><br>
+
+            Aaj bhi, kal bhi, har din
+            har ache bure waqt me.
+        </p>
+
+        <div class="proposal-question">
+            Will You Be Mine Forever? ❤️
+        </div>
+
+        <div class="proposal-buttons">
+
+            <button class="accept" onclick="accepted()">
+                I ACCEPT ❤️
+            </button>
+
+            <button class="reject" id="reject"
+                onpointerenter="moveReject()"
+                ontouchstart="moveReject()"
+                onclick="moveReject()">
+                I REJECT
+            </button>
+
+        </div>
+
+        <p style="font-size:12px; margin-top:15px;">
+            P.S. One of these buttons is feeling a little shy!
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SCREEN 7: SUCCESS -->
+
+<section class="screen" id="success">
+
+    <div class="firework-emoji">🎆💗🎆</div>
+
+    <div class="small">Yehi answer chahiye tha mujhe</div>
+
+    <h1>CONGRATULATIONS!</h1>
+
+    <h2>YOU SAID YES! ❤️</h2>
+
+    <div class="card">
+
+        <span class="big-heart">💑</span>
+
+        <p style="font-size:20px;">
+            One YES.
+
+            <br>
+
+            A million memories.
+
+            <br>
+
+            One beautiful forever.
+        </p>
+
+        <br>
+
+        <h2>You're Stuck With Me! ❤️</h2>
+
+        <p>
+            Here's to more laughter, more love,
+            more silly fights, more hugs and
+            countless beautiful memories.
+        </p>
+
+        <p style="margin-top:20px;">
+            I LOVE YOU SO MUCH!
+        </p>
+
+    </div>
+
+    <button class="main-btn" onclick="revealSecret()">
+        OPEN YOUR SECRET MESSAGE 💌
+    </button>
+
+    <div class="secret-box" id="secretBox">
+
+        <span style="font-size:50px;">💌</span>
+
+        <h2>Just Between You And Me...</h2>
+
+        <p>
+There's one thing I want you to know.
+
+Out of all the people I could have met,
+Mai bohot zyda grateful hu ke mai tumse mili.
+
+Tum koi ordinary person nhi ho meri life me.
+Tum woh ho jisko mai har din choose krna chahti,
+Jisse mujhe shadi krni h,
+Tum woh ho jiske sath mai har waqt rehna chahti.
+
+Thank you for being YOU.
+
+And if I had to choose all over again,
+my answer would still be YOU.
+
+Always yours,
+Your to be wife. ❤️
+        </p>
+
+        <div style="font-size:40px; margin-top:15px;">
+            ♾️❤️
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<script>
+
+// SCREEN NAVIGATION
+
+function showScreen(id) {
+
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    window.scrollTo(0, 0);
+
+}
+
+
+// MUSIC
+
+const song = document.getElementById("loveSong");
+const musicBtn = document.getElementById("musicBtn");
+
+async function toggleMusic() {
+
+    if(song.paused) {
+
+        try {
+            await song.play();
+            musicBtn.innerHTML = "♫ Music On";
+        } catch(error) {
+            musicBtn.innerHTML = "♫ Try Again";
+        }
+
+    } else {
+
+        song.pause();
+        musicBtn.innerHTML = "♫ Play Music";
+
+    }
+
+}
+
+
+// LOVE REASONS
+
+function reveal(button) {
+    button.classList.toggle("revealed");
+}
+
+
+// QUIZ
+
+function choose(button) {
+
+    const question = button.parentElement;
+
+    question.querySelectorAll(".quiz-option").forEach(option => {
+        option.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+}
+
+function finishQuiz() {
+
+    document.getElementById("quizResult").style.display = "block";
+
+}
+
+
+// RUNAWAY REJECT BUTTON
+
+function moveReject() {
+
+    const btn = document.getElementById("reject");
+
+    btn.style.position = "fixed";
+
+    const maxX = window.innerWidth - btn.offsetWidth - 15;
+    const maxY = window.innerHeight - btn.offsetHeight - 15;
+
+    const x = 10 + Math.random() * Math.max(0, maxX - 10);
+    const y = 10 + Math.random() * Math.max(0, maxY - 10);
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+
+}
+
+
+// ACCEPT
+
+function accepted() {
+
+    showScreen("success");
+
+    startFireworks();
+
+    for(let i = 0; i < 60; i++) {
+        setTimeout(createHeart, i * 100);
+    }
+
+}
+
+
+// SECRET MESSAGE
+
+function revealSecret() {
+
+    const secret = document.getElementById("secretBox");
+
+    secret.style.display = "block";
+
+    secret.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+// FLOATING HEARTS
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    const hearts = ["❤️","💕","💗","💖","💘","🌸"];
+
+    heart.innerHTML = hearts[
+        Math.floor(Math.random() * hearts.length)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+
+}
+
+setInterval(createHeart, 1200);
+
+
+// FIREWORKS
+
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let fireworksRunning = false;
+let animationFrame;
+
+function resizeCanvas() {
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+
+function createFirework() {
+
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight * .6;
+
+    const colors = [
+        "#ff1744",
+        "#ffeb3b",
+        "#e040fb",
+        "#00e5ff",
+        "#ffffff",
+        "#ff80ab"
+    ];
+
+    const color = colors[
+        Math.floor(Math.random() * colors.length)
+    ];
+
+    for(let i = 0; i < 65; i++) {
+
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 5 + 1;
+
+        particles.push({
+            x: x,
+            y: y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            life: 90,
+            color: color
+        });
+
+    }
+
+}
+
+
+function animateFireworks() {
+
+    if(!fireworksRunning) return;
+
+    ctx.clearRect(
+        0, 0,
+        window.innerWidth,
+        window.innerHeight
+    );
+
+    if(Math.random() < .08) {
+        createFirework();
+    }
+
+    particles.forEach((p, index) => {
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        p.vy += .035;
+        p.life--;
+
+        ctx.globalAlpha = Math.max(0, p.life / 90);
+        ctx.fillStyle = p.color;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+        ctx.fill();
+
+        if(p.life <= 0) {
+            particles.splice(index, 1);
+        }
+
+    });
+
+    ctx.globalAlpha = 1;
+
+    animationFrame = requestAnimationFrame(animateFireworks);
+
+}
+
+
+function startFireworks() {
+
+    if(fireworksRunning) return;
+
+    fireworksRunning = true;
+
+    for(let i = 0; i < 6; i++) {
+        setTimeout(createFirework, i * 250);
+    }
+
+    animateFireworks();
+
+}
+
+</script>
+
+</body>
+</html>
